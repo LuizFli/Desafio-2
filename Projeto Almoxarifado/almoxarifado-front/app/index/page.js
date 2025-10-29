@@ -24,11 +24,10 @@ export default function Dashboard() {
       <h1 className="text-2xl">Painel Principal</h1>
       <p className="mt-2">Usuário: {user?.name}</p>
       <div className="mt-4 flex gap-3">
-        <a className="p-2 bg-green-600 text-white rounded" href="/insumos">Cadastro de Insumo</a>
-        <a className="p-2 bg-yellow-600 text-white rounded" href="/estoque">Gestão de Estoque</a>
+        <h2 className="text-xl">Bem vindo!</h2>
       </div>
       <div className="mt-6">
-        <button onClick={logout} className="p-2 bg-red-600 text-white rounded">Logout</button>
+        
       </div>
     </div>
   );
