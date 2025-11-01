@@ -76,7 +76,7 @@ export default function InsumosPage() {
       </div>
 
       <div className="mt-6">
-        <a href="/dashboard" className="text-blue-600">Voltar</a>
+        <a href="/index" className="text-blue-600">Voltar</a>
       </div>
     </div>
   );

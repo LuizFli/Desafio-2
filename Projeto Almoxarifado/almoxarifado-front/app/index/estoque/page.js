@@ -9,11 +9,25 @@ export default function EstoquePage() {
   const [selectFocusedTipo, setSelectFocusedTipo] = useState(false);
   const [form, setForm] = useState({ tipo: 'entrada', quantidade: 0, data_movimentacao: '', requisitante: '' });
 
+  // insertion sort by nome (cumpre requisito de usar algoritmo explícito)
+  function insertionSortByNome(arr) {
+    const a = [...arr];
+    for (let i = 1; i < a.length; i++) {
+      const key = a[i];
+      let j = i - 1;
+      while (j >= 0 && a[j].nome.localeCompare(key.nome) > 0) {
+        a[j + 1] = a[j];
+        j--;
+      }
+      a[j + 1] = key;
+    }
+    return a;
+  }
+
   async function load() {
     const res = await api.get('/insumos');
-    // sort alphabetically by nome (requirement 7.1.1 uses an algorithm; here native sort used)
-    res.data.sort((a, b) => a.nome.localeCompare(b.nome));
-    setInsumos(res.data);
+    const sorted = insertionSortByNome(res.data);
+    setInsumos(sorted);
   }
 
   useEffect(() => { load(); }, []);
@@ -73,7 +87,7 @@ export default function EstoquePage() {
       </div>
 
       <div>
-        <a href="/dashboard" className="text-blue-600">Voltar</a>
+        <a href="/index" className="text-blue-600">Voltar</a>
       </div>
     </div>
   );
